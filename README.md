@@ -1,24 +1,30 @@
-# logan_reber_greenfire_electron_portfolio
+# LoganReber.GreenfireElectronPortfolio
+## Contact
+### Email
+### Linkedin
+### Github
+### Resume
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Dev Enviorment
+### OS - Windows 10 Pro x64 (v. 20H2)
+### Node - 14.17.3
+### Electron - 13.1.6
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Instructions
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Dev Startup Instructions (Win 10 x64)
+1. Clone Repository `git clone [REPO_URL]`
+2. Install Dependencies `npm install`
+3. Run "start" script `npm start`
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### App Startup Instructions
+1. TBD...
+
+## API Keys
+
+### TWITTER BBCAfrica
+### TWITTER Etherium
+### CC Tezos
+### CC Burst
+### CC Algorand
