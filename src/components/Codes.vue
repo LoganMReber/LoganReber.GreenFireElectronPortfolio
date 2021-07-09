@@ -44,6 +44,12 @@
   justify-content: space-evenly;
   align-items:center;
 }
+@media screen and (max-width:800px){
+  .codes {
+    width: 100%;
+  }
+
+}
 .code {
   /* display: flex; */
   flex-direction:column;
