@@ -8,8 +8,6 @@
       <h3>{{data[0]}}</h3>
       <vue-qr margin='0' size='100' :logoSrc='logo1' :text="data[0]"></vue-qr>
     </div>
-  </div>
-  <div class="codes">
     <div class="code">
       <h3>{{data[1]}}</h3>
       <vue-qr margin='0' size='100' :logoSrc='logo2' :text="data[1]"></vue-qr>
@@ -42,19 +40,18 @@
 <style>
 .codes {
   display:flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap:wrap;
+  justify-content: space-evenly;
+  align-items:center;
 }
 .code {
   /* display: flex; */
   flex-direction:column;
   align-items:center;
-  margin: 5px;
-  width: 20%;
-  min-width: 130px;
+  width: 140px;
 }
 .code h3 {
-height: 70px;
+height: 30px;
 display:flex;
   justify-content: center;
   align-items: center;

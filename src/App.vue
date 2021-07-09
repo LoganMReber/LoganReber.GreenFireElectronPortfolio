@@ -1,23 +1,70 @@
 <template>
-  <Codes v-if='data[0]' v-bind:data='data'></Codes>
-  <a
-      class="twitter-timeline"
-       data-lang="en" data-width="300" data-height="540" 
-      href="https://twitter.com/ethereum?ref_src=twsrc%5Etfw"
-      >Tweets by ethereum</a
-    >
+  <button v-on:click='save'>Save</button>
+  {{imageURL}}
+  <MobileView></MobileView>
+  <div class='MainView'>
+    <div class='feed'>
+      <a 
+        class="twitter-timeline" 
+        data-lang="en" 
+        data-width="300"
+        data-height="700" 
+        href="https://twitter.com/BBCAfrica?ref_src=twsrc%5Etfw"></a>
+    </div>
+    <Codes class='codes-component' v-if='data[0]' v-bind:data='data'></Codes>
+    <div class='feed'>
+      <a 
+        class="twitter-timeline"
+        data-lang="en" 
+        data-width="300" 
+        data-height="700" 
+        href="https://twitter.com/ethereum?ref_src=twsrc%5Etfw"></a>
+    </div>
+  </div>
+  <footer>
+      <a href="https://github.com/LoganMReber/">Github</a>
+      <a href="https://www.linkedin.com/in/logan-reber/">LinkedIn</a>
+      <a href="/Logan_Reber_Resume">Resume</a>
+      <a href="mailto: loganmreber@gmail.com">Email</a>
+  </footer>
 </template>
 
 <script>
 import axios from 'axios'
-import Codes from './Codes.vue'
+import html2canvas from 'html2canvas'
+import MobileView from './components/MobileView.vue'
+import Codes from './components/Codes.vue'
 export default {
-name: 'App',
-  components: {Codes},
+  name: 'App',
+  components: {Codes,MobileView},
   data() {
     return {
+      imageURL: '',
       res: null,
-      data: [null,null,null]
+      data: [null,null,null],
+      viewTab: 0
+      }
+  },
+  methods:{
+    save() {
+      html2canvas(document.querySelector('.codes-component')).then( canvas => {
+          this.imageURL = canvas.toDataURL('image/png')
+          this.dlfile(this.imageURL,'Screenshot')
+        });
+    },
+    dlfile(downloadUrl, downloadName) {
+      let aLink = document.createElement("a");
+      aLink.style.display = "none";
+      aLink.href = downloadUrl;
+      aLink.download = `${downloadName}.png`;
+      document.body.appendChild(aLink);
+      aLink.click();
+      document.body.removeChild(aLink);
+    }
+  },
+  watch: {
+    imageURL: function(){
+      window.open(this.imageURL)
       }
   },
   mounted() {
@@ -43,6 +90,34 @@ name: 'App',
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+footer {
+ display:flex;
+ flex-direction:column;
+}
+footer a {
+ color:#FFF;
+ background-color:#000;
+ text-decoration:none;
+ margin-top: 1px;
+ font-size: 24px;
+ padding: 10px 0px;
+}
+footer a:hover {
+ background-color:#333;
+}
+.MainView {
+  display: flex;
+  justify-content:space-between;
+}
+.feed {
+  min-width:300px;
+  }
+@media screen and (max-width: 800px){
+  .MainView {
+    display: none;
+  }
 }
 
 </style>
